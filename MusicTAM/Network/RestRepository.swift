@@ -29,6 +29,9 @@ class RestRepository: Repository {
             print("GET FROM REMOTE 👍: \n\(requestParams.description())")
 
             if let parsed: T = try? JSONDecoder().decode(T.self, from: result) {
+                
+                // print("\n\n data => \(parsed) \n\n")
+                
                 completion([parsed])
                 return
 

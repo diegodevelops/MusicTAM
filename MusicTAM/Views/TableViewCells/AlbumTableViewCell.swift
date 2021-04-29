@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol ListTableViewCellDelegate: AnyObject {
+protocol AlbumTableViewCellDelegate: AnyObject {
     
 }
 
-class ListTableViewCell: UITableViewCell {
+class AlbumTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    weak var delegate: ListTableViewCellDelegate?
+    weak var delegate: AlbumTableViewCellDelegate?
     private let MARGIN: CGFloat = 20
     private let INNER_MARGIN: CGFloat = 4
     private let RIGHT_MARGIN: CGFloat = -50
-    var artist: Artist?
+    var album: Album?
     var indexPath: IndexPath!
     
     let placeholder: UIView = {
@@ -99,5 +99,10 @@ class ListTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
+    public func updateImageIfNeeded(image: UIImage?) {
+        imgView.alpha = 0
+        imgView.image = image
+        UIView.animate(withDuration: 0.4, animations: { self.imgView.alpha = 1 })
+    }
    
 }

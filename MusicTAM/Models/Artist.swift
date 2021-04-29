@@ -10,4 +10,5 @@ struct Artist: Codable {
     let amgArtistId: Int32?
     let artistName: String?
     let primaryGenreName: String?
+    let artworkUrl100: String? 
 }

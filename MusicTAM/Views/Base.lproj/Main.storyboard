@@ -64,11 +64,101 @@
                     <connections>
                         <outlet property="searchBarContainer" destination="50S-Mx-WSz" id="Pbc-9u-MFI"/>
                         <outlet property="tableView" destination="ctZ-4m-XL8" id="JuX-nG-OLb"/>
+                        <segue destination="UwV-35-CVV" kind="show" id="f43-z8-bGv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="837-Kd-94N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-365.21739130434787" y="596.65178571428567"/>
+        </scene>
+        <!--Albums View Controller-->
+        <scene sceneID="1UF-Tz-GxM">
+            <objects>
+                <viewController storyboardIdentifier="AlbumsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UwV-35-CVV" customClass="AlbumsViewController" customModule="MusicTAM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m9V-Tp-k3G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B1l-BU-usV">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="UwV-35-CVV" id="DW2-Qa-7rx"/>
+                                    <outlet property="delegate" destination="UwV-35-CVV" id="vjd-8V-H5s"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="q0C-PB-45b"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B1l-BU-usV" firstAttribute="leading" secondItem="q0C-PB-45b" secondAttribute="leading" id="ZgJ-f4-0yN"/>
+                            <constraint firstItem="B1l-BU-usV" firstAttribute="top" secondItem="q0C-PB-45b" secondAttribute="top" id="s2b-mp-uza"/>
+                            <constraint firstItem="B1l-BU-usV" firstAttribute="bottom" secondItem="q0C-PB-45b" secondAttribute="bottom" id="tkA-Lh-eSb"/>
+                            <constraint firstItem="q0C-PB-45b" firstAttribute="trailing" secondItem="B1l-BU-usV" secondAttribute="trailing" id="zXd-5T-6TZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="kr0-8R-cLN"/>
+                    <connections>
+                        <outlet property="tableView" destination="B1l-BU-usV" id="PQc-0k-IlM"/>
+                        <segue destination="tvX-LD-CcS" kind="show" id="WyG-lH-5DO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mve-Bx-5IN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="353.62318840579712" y="596.65178571428567"/>
+        </scene>
+        <!--Songs View Controller-->
+        <scene sceneID="xa2-DO-mxO">
+            <objects>
+                <viewController storyboardIdentifier="SongsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tvX-LD-CcS" customClass="SongsViewController" customModule="MusicTAM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xng-CL-tLG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d3M-PF-cEh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fmv-jJ-zpO">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tvX-LD-CcS" id="ClZ-uF-nE2"/>
+                                    <outlet property="delegate" destination="tvX-LD-CcS" id="hCD-8o-xxI"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbM-ou-8Kn">
+                                <rect key="frame" x="20" y="108" width="374" height="16.5"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nzG-dJ-MVA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="d3M-PF-cEh" firstAttribute="bottom" secondItem="nzG-dJ-MVA" secondAttribute="bottom" id="4la-f3-Bnk"/>
+                            <constraint firstItem="nzG-dJ-MVA" firstAttribute="trailing" secondItem="KbM-ou-8Kn" secondAttribute="trailing" constant="20" id="7GM-Oi-XqJ"/>
+                            <constraint firstItem="KbM-ou-8Kn" firstAttribute="leading" secondItem="nzG-dJ-MVA" secondAttribute="leading" constant="20" id="7Jn-Lt-Tsf"/>
+                            <constraint firstItem="d3M-PF-cEh" firstAttribute="top" secondItem="nzG-dJ-MVA" secondAttribute="top" id="gAI-Ar-u5G"/>
+                            <constraint firstItem="nzG-dJ-MVA" firstAttribute="trailing" secondItem="d3M-PF-cEh" secondAttribute="trailing" id="pOs-4x-Xcv"/>
+                            <constraint firstItem="d3M-PF-cEh" firstAttribute="leading" secondItem="nzG-dJ-MVA" secondAttribute="leading" id="vqw-Ev-1U1"/>
+                            <constraint firstItem="KbM-ou-8Kn" firstAttribute="top" secondItem="nzG-dJ-MVA" secondAttribute="top" constant="20" id="wh7-0V-gSh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="LgU-NV-1uC"/>
+                    <connections>
+                        <outlet property="collectionView" destination="d3M-PF-cEh" id="AtY-Na-2cM"/>
+                        <outlet property="flowLayout" destination="fmv-jJ-zpO" id="kaX-eD-kPS"/>
+                        <outlet property="noResultsLabel" destination="KbM-ou-8Kn" id="RMZ-f2-RSK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfr-jF-cn0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092.753623188406" y="596.65178571428567"/>
         </scene>
     </scenes>
     <resources>

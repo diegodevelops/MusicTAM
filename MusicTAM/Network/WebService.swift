@@ -21,6 +21,8 @@ class WebService: WebServiceProtocol {
                 return
         }
 
+        print("finalUrl = \(finalUrl), parameters = \(request.params)")
+        
         Alamofire.request(finalUrl,
                           method: request.alamofireMethod,
                           parameters: request.params,
@@ -30,6 +32,14 @@ class WebService: WebServiceProtocol {
             .responseData(completionHandler: { response in
                 if response.result.isSuccess,
                     let data = response.result.value {
+                    // parse the data
+                    var parsedResult = [String:AnyObject]()
+                    do {
+                        parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
+                    } catch {
+                        print("\n\n Failed to parse data!!!!!!! \n\n")
+                    }
+                    print("\n\n parsedResult = \(parsedResult) \n\n")
                     completion(data)
 
                 } else {

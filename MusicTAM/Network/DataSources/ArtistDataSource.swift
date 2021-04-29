@@ -37,6 +37,8 @@ extension DataSource: ArtistDataSource {
         let request = Request(serviceUrl: serviceUrl,
                               contentType: .queryString,
                               method: .get)
+        
+        print("\n\n request params = \(request.params) \n\n")
 
         performRequest(requestParams: request,
                        needsLoader: needsLoader,
