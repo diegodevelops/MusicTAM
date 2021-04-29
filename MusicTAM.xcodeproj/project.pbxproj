@@ -27,6 +27,12 @@
 		1114BFBC261B113000AEB2ED /* Compilation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1114BFBB261B113000AEB2ED /* Compilation.swift */; };
 		1114BFC2261B12A600AEB2ED /* ArtistDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1114BFC1261B12A600AEB2ED /* ArtistDataSource.swift */; };
 		113095A7261B34D300EDE583 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 113095A6261B34D300EDE583 /* Alamofire */; };
+		F1CB70C9263AB7B600155E86 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB70C8263AB7B600155E86 /* SearchViewController.swift */; };
+		F1CB70D2263AB7DC00155E86 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB70D1263AB7DC00155E86 /* ListTableViewCell.swift */; };
+		F1CB70D7263AB9F600155E86 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB70D6263AB9F600155E86 /* Cache.swift */; };
+		F1CF65C0263AC2CB005FFE88 /* PlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF65BF263AC2CB005FFE88 /* PlaceholderTableViewCell.swift */; };
+		F1CF65C2263AD1AF005FFE88 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF65C1263AD1AF005FFE88 /* GCDBlackBox.swift */; };
+		F1CF65C4263ADDD3005FFE88 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF65C3263ADDD3005FFE88 /* Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +78,12 @@
 		1114BFB6261B107800AEB2ED /* WebServiceURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceURLProvider.swift; sourceTree = "<group>"; };
 		1114BFBB261B113000AEB2ED /* Compilation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compilation.swift; sourceTree = "<group>"; };
 		1114BFC1261B12A600AEB2ED /* ArtistDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDataSource.swift; sourceTree = "<group>"; };
+		F1CB70C8263AB7B600155E86 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F1CB70D1263AB7DC00155E86 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		F1CB70D6263AB9F600155E86 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		F1CF65BF263AC2CB005FFE88 /* PlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableViewCell.swift; sourceTree = "<group>"; };
+		F1CF65C1263AD1AF005FFE88 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		F1CF65C3263ADDD3005FFE88 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +135,7 @@
 		1114BF2C261B026A00AEB2ED /* MusicTAM */ = {
 			isa = PBXGroup;
 			children = (
+				F1CB70C7263AB7A100155E86 /* Controllers */,
 				1114BF66261B02BE00AEB2ED /* Views */,
 				1114BF65261B02B700AEB2ED /* Others */,
 				1114BF64261B02AE00AEB2ED /* Models */,
@@ -181,6 +194,9 @@
 			children = (
 				1114BF8F261B098500AEB2ED /* Extensions */,
 				1114BFBB261B113000AEB2ED /* Compilation.swift */,
+				F1CB70D6263AB9F600155E86 /* Cache.swift */,
+				F1CF65C1263AD1AF005FFE88 /* GCDBlackBox.swift */,
+				F1CF65C3263ADDD3005FFE88 /* Convenience.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -188,6 +204,7 @@
 		1114BF66261B02BE00AEB2ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F1CB70D0263AB7BC00155E86 /* TableViewCells */,
 				1114BF33261B026A00AEB2ED /* Main.storyboard */,
 				1114BF38261B026C00AEB2ED /* LaunchScreen.storyboard */,
 			);
@@ -209,6 +226,23 @@
 				1114BFC1261B12A600AEB2ED /* ArtistDataSource.swift */,
 			);
 			path = DataSources;
+			sourceTree = "<group>";
+		};
+		F1CB70C7263AB7A100155E86 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1CB70C8263AB7B600155E86 /* SearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F1CB70D0263AB7BC00155E86 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F1CB70D1263AB7DC00155E86 /* ListTableViewCell.swift */,
+				F1CF65BF263AC2CB005FFE88 /* PlaceholderTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,12 +381,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1CB70C9263AB7B600155E86 /* SearchViewController.swift in Sources */,
+				F1CF65C4263ADDD3005FFE88 /* Convenience.swift in Sources */,
+				F1CB70D2263AB7DC00155E86 /* ListTableViewCell.swift in Sources */,
 				1114BF75261B06EF00AEB2ED /* Song.swift in Sources */,
 				1114BF8B261B090400AEB2ED /* Request.swift in Sources */,
+				F1CB70D7263AB9F600155E86 /* Cache.swift in Sources */,
 				1114BF91261B099D00AEB2ED /* Request+Alamofire.swift in Sources */,
+				F1CF65C2263AD1AF005FFE88 /* GCDBlackBox.swift in Sources */,
 				1114BFBC261B113000AEB2ED /* Compilation.swift in Sources */,
 				1114BF32261B026A00AEB2ED /* ViewController.swift in Sources */,
 				1114BF86261B08E900AEB2ED /* WebService.swift in Sources */,
+				F1CF65C0263AC2CB005FFE88 /* PlaceholderTableViewCell.swift in Sources */,
 				1114BF2E261B026A00AEB2ED /* AppDelegate.swift in Sources */,
 				1114BF68261B051A00AEB2ED /* Artist.swift in Sources */,
 				1114BF30261B026A00AEB2ED /* SceneDelegate.swift in Sources */,
@@ -537,13 +577,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67266UR7NA;
+				DEVELOPMENT_TEAM = 3WXY8WG546;
 				INFOPLIST_FILE = MusicTAM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = theagilemonkeys.MusicTAM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Diego.MusicTAM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -556,13 +596,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67266UR7NA;
+				DEVELOPMENT_TEAM = 3WXY8WG546;
 				INFOPLIST_FILE = MusicTAM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = theagilemonkeys.MusicTAM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Diego.MusicTAM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

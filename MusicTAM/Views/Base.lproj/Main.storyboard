@@ -1,24 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QGM-m2-y79">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="h0k-Nx-zUY">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="QGM-m2-y79" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jrh-3N-2c2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xhc-xX-acP" kind="relationship" relationship="rootViewController" id="1Ad-B8-DAc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZdW-Xk-FmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1104" y="597"/>
+        </scene>
+        <!--MusictTAM-->
+        <scene sceneID="HIj-MJ-6SQ">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xhc-xX-acP" customClass="SearchViewController" customModule="MusicTAM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IpQ-kU-uuE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ctZ-4m-XL8">
+                                <rect key="frame" x="0.0" y="152" width="414" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xhc-xX-acP" id="JaP-nj-iOe"/>
+                                    <outlet property="delegate" destination="xhc-xX-acP" id="S3X-47-iMG"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50S-Mx-WSz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="64"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="vCX-9w-7i3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5zb-bh-ZFb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="50S-Mx-WSz" firstAttribute="top" secondItem="5zb-bh-ZFb" secondAttribute="top" id="C9m-mg-vga"/>
+                            <constraint firstItem="ctZ-4m-XL8" firstAttribute="leading" secondItem="5zb-bh-ZFb" secondAttribute="leading" id="Gm1-1o-lKM"/>
+                            <constraint firstItem="5zb-bh-ZFb" firstAttribute="bottom" secondItem="ctZ-4m-XL8" secondAttribute="bottom" id="T7M-lq-sU6"/>
+                            <constraint firstItem="50S-Mx-WSz" firstAttribute="trailing" secondItem="5zb-bh-ZFb" secondAttribute="trailing" id="UfV-4c-HP1"/>
+                            <constraint firstItem="5zb-bh-ZFb" firstAttribute="trailing" secondItem="ctZ-4m-XL8" secondAttribute="trailing" id="ggn-KW-xbF"/>
+                            <constraint firstItem="ctZ-4m-XL8" firstAttribute="top" secondItem="50S-Mx-WSz" secondAttribute="bottom" id="mno-hf-1TZ"/>
+                            <constraint firstItem="50S-Mx-WSz" firstAttribute="leading" secondItem="5zb-bh-ZFb" secondAttribute="leading" id="t9f-yW-sQ5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="MusictTAM" id="ofx-zo-ofE"/>
+                    <connections>
+                        <outlet property="searchBarContainer" destination="50S-Mx-WSz" id="Pbc-9u-MFI"/>
+                        <outlet property="tableView" destination="ctZ-4m-XL8" id="JuX-nG-OLb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="837-Kd-94N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-365.21739130434787" y="596.65178571428567"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
