@@ -27,11 +27,11 @@ class ArtistTableViewCell: UITableViewCell {
     let nameLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.numberOfLines = 0
+        l.numberOfLines = 3
         l.textAlignment = .left
         l.text = ""
-        l.font = UIFont(name: "Helvetica-Bold", size: 17)
-        l.textColor = UIColor.black
+        l.font = Style.Fonts.name
+        l.textColor = Style.Colors.name
         return l
     }()
     
@@ -41,8 +41,8 @@ class ArtistTableViewCell: UITableViewCell {
         l.numberOfLines = 0
         l.textAlignment = .left
         l.text = ""
-        l.font = UIFont(name: "Helvetica-Bold", size: 14)
-        l.textColor = UIColor.lightGray
+        l.font = Style.Fonts.description
+        l.textColor = Style.Colors.description
         return l
     }()
     

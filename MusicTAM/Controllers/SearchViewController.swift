@@ -39,7 +39,7 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // updating nav bar here in case it was modified on other pushed view controllers
-        convenience.updatenNavbarTitle(selfController: self, withTitle: "MusicTAM", fontName: "Menlo-Bold", fontSize: 17, fontColor: .black)
+        convenience.updatenNavbarTitle(selfController: self, withTitle: "MusicTAM", font: Style.Fonts.headline, fontColor: Style.Colors.headline)
     }
     
     // MARK: - only once
@@ -53,7 +53,7 @@ class SearchViewController: UIViewController {
         tableView.register(ArtistTableViewCell.self, forCellReuseIdentifier: RID)
         tableView.register(PlaceholderTableViewCell.self, forCellReuseIdentifier: RID_PLACEHOLDER)
         // toast
-        convenience.createToast(toast: toast, view: view, withBackgroundColor: UIColor.black.withAlphaComponent(0.8), fontName: "Helvetica-Bold", fontSize: 14, fontColor: UIColor.white)
+        convenience.createToast(toast: toast, view: view, withBackgroundColor: Style.Colors.toastBackground, font: Style.Fonts.defaultSmallBold, fontColor: Style.Colors.toastText)
         // API helpers
         webService = WebService()
         repo = RestRepository(webService: webService)
@@ -145,7 +145,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - UIScrollViewDelegate
 extension SearchViewController: UIScrollViewDelegate {
-    // implementing this just to hide keyboard when users starts scrolling
+    // implementing this just to hide keyboard when users start scrolling
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard !autoScrolling else { return }
         searchBar.resignFirstResponder()

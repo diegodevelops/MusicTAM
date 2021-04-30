@@ -38,6 +38,8 @@
 		F1CF65C4263ADDD3005FFE88 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF65C3263ADDD3005FFE88 /* Convenience.swift */; };
 		F1CF65C6263AEB51005FFE88 /* ImageDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF65C5263AEB51005FFE88 /* ImageDownloadHelper.swift */; };
 		F1CF65C8263B1093005FFE88 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF65C7263B1093005FFE88 /* ArtistTableViewCell.swift */; };
+		F1E8D5C5263B6B47003D76FF /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8D5C4263B6B47003D76FF /* Style.swift */; };
+		F1E8D5C9263B77F2003D76FF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8D5C8263B77F2003D76FF /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		F1CF65C3263ADDD3005FFE88 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 		F1CF65C5263AEB51005FFE88 /* ImageDownloadHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadHelper.swift; sourceTree = "<group>"; };
 		F1CF65C7263B1093005FFE88 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
+		F1E8D5C4263B6B47003D76FF /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		F1E8D5C8263B77F2003D76FF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +199,6 @@
 				1114BF67261B051A00AEB2ED /* Artist.swift */,
 				1114BF6F261B066F00AEB2ED /* Album.swift */,
 				1114BF74261B06EF00AEB2ED /* Song.swift */,
-				F129754D263B1BE500E65629 /* Enums.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +211,8 @@
 				F1CB70D6263AB9F600155E86 /* Cache.swift */,
 				F1CF65C1263AD1AF005FFE88 /* GCDBlackBox.swift */,
 				F1CF65C3263ADDD3005FFE88 /* Convenience.swift */,
+				F129754D263B1BE500E65629 /* Enums.swift */,
+				F1E8D5C4263B6B47003D76FF /* Style.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				F1CB70C8263AB7B600155E86 /* SearchViewController.swift */,
 				F129754B263B1B1700E65629 /* AlbumsViewController.swift */,
 				F1297550263B304000E65629 /* SongsViewController.swift */,
+				F1E8D5C8263B77F2003D76FF /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -405,10 +411,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1CB70C9263AB7B600155E86 /* SearchViewController.swift in Sources */,
+				F1E8D5C9263B77F2003D76FF /* WebViewController.swift in Sources */,
 				F1CF65C4263ADDD3005FFE88 /* Convenience.swift in Sources */,
 				F1CB70D2263AB7DC00155E86 /* AlbumTableViewCell.swift in Sources */,
 				1114BF75261B06EF00AEB2ED /* Song.swift in Sources */,
 				1114BF8B261B090400AEB2ED /* Request.swift in Sources */,
+				F1E8D5C5263B6B47003D76FF /* Style.swift in Sources */,
 				F1CB70D7263AB9F600155E86 /* Cache.swift in Sources */,
 				1114BF91261B099D00AEB2ED /* Request+Alamofire.swift in Sources */,
 				F1CF65C2263AD1AF005FFE88 /* GCDBlackBox.swift in Sources */,
@@ -534,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -589,7 +597,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

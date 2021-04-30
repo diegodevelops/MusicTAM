@@ -45,7 +45,7 @@ class AlbumsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // updating nav bar here in case it was modified on other pushed view controllers
-        convenience.updatenNavbarTitle(selfController: self, withTitle: artist.artistName ?? "", fontName: "Menlo-Bold", fontSize: 17, fontColor: .black)
+        convenience.updatenNavbarTitle(selfController: self, withTitle: artist.artistName ?? "", font: Style.Fonts.headline, fontColor: Style.Colors.headline)
     }
     
     // MARK: -setUp
@@ -54,8 +54,7 @@ class AlbumsViewController: UIViewController {
         tableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: RID)
         tableView.register(PlaceholderTableViewCell.self, forCellReuseIdentifier: RID_PLACEHOLDER)
         // toast
-        convenience.createToast(toast: toast, view: view, withBackgroundColor: UIColor.black.withAlphaComponent(0.8), fontName: "Helvetica-Bold", fontSize: 14, fontColor: UIColor.white)
-        // API helpers
+        convenience.createToast(toast: toast, view: view, withBackgroundColor: Style.Colors.toastBackground, font: Style.Fonts.defaultSmallBold, fontColor: Style.Colors.toastText)        // API helpers
         webService = WebService()
         repo = RestRepository(webService: webService)
         webServiceUrlBuilder = WebServiceURLProviderBuilder()
@@ -104,13 +103,13 @@ extension AlbumsViewController: UITableViewDelegate, UITableViewDataSource {
             switch searchMode {
             case .Home:
                 cell.activityIndicator.stopAnimating()
-                placeholderTxt = "Didn't find \(artist.artistName ?? "")'s albums"
+                placeholderTxt = "Didn't find \(artist.artistName ?? "this artist")'s albums"
             case .Active:
                 cell.activityIndicator.startAnimating()
-                placeholderTxt = "Searching for \(artist.artistName ?? "")'s albums..."
+                placeholderTxt = "Searching for \(artist.artistName ?? "this artist")'s albums..."
             case .Success:
                 cell.activityIndicator.stopAnimating()
-                placeholderTxt = "Didn't find \(artist.artistName ?? "")'s albums"
+                placeholderTxt = "Didn't find \(artist.artistName ?? "this artist")'s albums"
             case .Error:
                 cell.activityIndicator.stopAnimating()
                 placeholderTxt = "Something went wrong!"
@@ -132,6 +131,7 @@ extension AlbumsViewController: UITableViewDelegate, UITableViewDataSource {
             // timestampString can be a unique text that
             // we can use to track the image in the cache
             let timestampString = (cell.album?.collectionName ?? "").trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "_").folding(options: .diacriticInsensitive, locale: .current)
+            cell.imgView.alpha = 0 // must do
             imgDownloadHelper.loadMedia(urlString: cell.album?.artworkUrl60 ?? "", timestampString: timestampString)  {
                 image in
                 performUIUpdatesOnMain {

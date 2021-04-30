@@ -11,23 +11,23 @@ class Convenience: NSObject {
     
     
     // MARK: - navbar
-    public func updatenNavbarTitle(selfController: UIViewController?, withTitle: String, fontName: String, fontSize: CGFloat, fontColor: UIColor) {
-        selfController?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : fontColor, NSAttributedString.Key.font: UIFont(name: fontName, size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)]
+    public func updatenNavbarTitle(selfController: UIViewController?, withTitle: String, font: UIFont, fontColor: UIColor) {
+        selfController?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : fontColor, NSAttributedString.Key.font: font]
         selfController?.navigationItem.title = withTitle
     }
-    public func updatenNavbarItems(selfController: UIViewController?, withTitle: String, fontName: String, fontSize: CGFloat, withColor: UIColor) {
-        let attributes = [ NSAttributedString.Key.foregroundColor: withColor, NSAttributedString.Key.font: UIFont(name: fontName, size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)] as [NSAttributedString.Key : Any]
+    public func updatenNavbarItems(selfController: UIViewController?, withTitle: String, font: UIFont, withColor: UIColor) {
+        let attributes = [ NSAttributedString.Key.foregroundColor: withColor, NSAttributedString.Key.font: font] as [NSAttributedString.Key : Any]
         selfController?.navigationItem.rightBarButtonItem?.setTitleTextAttributes(attributes, for: .normal)
         selfController!.navigationItem.leftBarButtonItem?.setTitleTextAttributes(attributes, for: .normal)
     }
     
     // MARK: - Toast
-    func createToast(toast: UILabel, view: UIView, withBackgroundColor: UIColor, fontName: String, fontSize: CGFloat, fontColor: UIColor) {
+    func createToast(toast: UILabel, view: UIView, withBackgroundColor: UIColor, font: UIFont, fontColor: UIColor) {
         let x: CGFloat = (view.frame.width/2) - 50
         let y: CGFloat = view.frame.height*0.2
         toast.frame = CGRect(x: x, y: y, width: 100,  height : 40)
         toast.textColor = fontColor
-        toast.font = UIFont(name: fontName, size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
+        toast.font = font
         toast.textAlignment = .center
         toast.alpha = 0
         toast.clipsToBounds = true

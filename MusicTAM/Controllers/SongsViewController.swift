@@ -18,6 +18,7 @@ class SongsViewController: UIViewController {
     // MARK: - Properties
     private let convenience = Convenience.sharedInstance()
     private let RID = "SongCollecionViewCell"
+    private let SID = "WebViewController"
     private var albums = [Album]()
     private var searchMode: SearchMode = .Active
     private let imgDownloadHelper = ImageDownloadHelper()
@@ -34,7 +35,7 @@ class SongsViewController: UIViewController {
     private var webServiceUrlBuilder: WebServiceURLProviderBuilder!
     
     // flowLayout
-    fileprivate let sectionInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+    fileprivate let sectionInsets = UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8)
     fileprivate var itemsPerRow: CGFloat = 2.0
     fileprivate var paddingSpace: CGFloat = 24
     
@@ -52,7 +53,7 @@ class SongsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // updating nav bar here in case it was modified on other pushed view controllers
-        convenience.updatenNavbarTitle(selfController: self, withTitle: album.collectionName ?? "", fontName: "Menlo-Bold", fontSize: 17, fontColor: .black)
+        convenience.updatenNavbarTitle(selfController: self, withTitle: album.collectionName ?? "", font: Style.Fonts.headline, fontColor: Style.Colors.headline)
     }
     
     // this will also update items per row in case we're in an iPad and it rotates
@@ -66,14 +67,13 @@ class SongsViewController: UIViewController {
         // collectionView
         collectionView.register(SongCollecionViewCell.self, forCellWithReuseIdentifier: RID)
         // toast
-        convenience.createToast(toast: toast, view: view, withBackgroundColor: UIColor.black.withAlphaComponent(0.8), fontName: "Helvetica-Bold", fontSize: 14, fontColor: UIColor.white)
-        // API helpers
+        convenience.createToast(toast: toast, view: view, withBackgroundColor: Style.Colors.toastBackground, font: Style.Fonts.defaultSmallBold, fontColor: Style.Colors.toastText)        // API helpers
         webService = WebService()
         repo = RestRepository(webService: webService)
         webServiceUrlBuilder = WebServiceURLProviderBuilder()
         dataSource = DataSource(repository: repo, webServiceURLProvider: webServiceUrlBuilder.getProvider(for: Compilation.environment))
         // label text
-        noResultsLabel.text = "Searching for songs in \(album.collectionName ?? "Unknown name")..."
+        noResultsLabel.text = "Searching for songs in \(album.collectionName ?? "this album")..."
     }
     private func setUpFlowLayout() {
         // in case we're in an iPad
@@ -99,9 +99,13 @@ class SongsViewController: UIViewController {
                let songs = firstSongResponse.results {
                 self?.searchMode = .Success
                 self?.songs = songs
-                performUIUpdatesOnMain {
-                    self?.collectionView.reloadData()
-                    self?.noResultsLabel.isHidden = true
+                if songs.count == 0 {
+                    performUIUpdatesOnMain { self?.showNoResultsLabel() }
+                } else {
+                    performUIUpdatesOnMain {
+                        self?.collectionView.reloadData()
+                        self?.noResultsLabel.isHidden = true
+                    }
                 }
             } else {
                 self?.searchMode = .Error
@@ -114,8 +118,16 @@ class SongsViewController: UIViewController {
         })
     }
     private func showNoResultsLabel() {
-        noResultsLabel.text = "Didn't find \(album.collectionName)'s songs"
+        noResultsLabel.text = "Didn't find \(album.collectionName ?? "this album")'s songs"
         noResultsLabel.isHidden = false
+    }
+    
+    // MARK: - push or present
+    private func presentWebVC(urlString: String, navTitle: String) {
+        let vc = storyboard?.instantiateViewController(identifier: SID) as! WebViewController
+        vc.navTitle = navTitle
+        vc.urlString = urlString
+        present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
     }
 }
 
@@ -129,16 +141,18 @@ extension SongsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let song = songs[indexPath.row]
         cell.song = song
         cell.tLabel.text = song.trackName ?? "Unknown name"
+        cell.delegate = self // for play button
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // handle image loading here in case images from re-used cells overlap
         if let cell = cell as? SongCollecionViewCell {
             // this too we must update
-            cell.tLabel.textColor = (cell.song?.trackName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "") == "" ? .lightGray : .black
+            cell.tLabel.textColor = (cell.song?.trackName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "") == "" ? Style.Colors.description : Style.Colors.name
             // timestampString can be a unique text that
             // we can use to track the image in the cache
             let timestampString = (cell.song?.trackName ?? "").trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "_").folding(options: .diacriticInsensitive, locale: .current)
+            cell.imgView.alpha = 0 // must do
             imgDownloadHelper.loadMedia(urlString: cell.song?.artworkUrl100 ?? "", timestampString: timestampString)  {
                 image in
                 performUIUpdatesOnMain {
@@ -146,5 +160,13 @@ extension SongsViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 }
             }
         }
+    }
+}
+
+
+//
+extension SongsViewController: SongCollecionViewCellDelegate {
+    func tappedPlayButton(cell: SongCollecionViewCell) {
+        presentWebVC(urlString: cell.song?.previewUrl ?? "", navTitle: "Preview")
     }
 }

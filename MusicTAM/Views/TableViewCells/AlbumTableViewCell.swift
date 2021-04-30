@@ -7,14 +7,10 @@
 
 import UIKit
 
-protocol AlbumTableViewCellDelegate: AnyObject {
-    
-}
 
 class AlbumTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    weak var delegate: AlbumTableViewCellDelegate?
     private let MARGIN: CGFloat = 20
     private let INNER_MARGIN: CGFloat = 4
     private let RIGHT_MARGIN: CGFloat = -50
@@ -24,7 +20,7 @@ class AlbumTableViewCell: UITableViewCell {
     let placeholder: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
+        v.backgroundColor = Style.Colors.imgBackground
         v.layer.cornerRadius = 2
         return v
     }()
@@ -33,7 +29,7 @@ class AlbumTableViewCell: UITableViewCell {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
-        iv.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
+        iv.backgroundColor = Style.Colors.imgBackground
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 2
         return iv
@@ -45,8 +41,8 @@ class AlbumTableViewCell: UITableViewCell {
         l.numberOfLines = 3
         l.textAlignment = .left
         l.text = ""
-        l.font = UIFont(name: "Helvetica-Bold", size: 14)
-        l.textColor = UIColor.black
+        l.font = Style.Fonts.name
+        l.textColor = Style.Colors.name
         return l
     }()
     
@@ -56,8 +52,8 @@ class AlbumTableViewCell: UITableViewCell {
         l.numberOfLines = 0
         l.textAlignment = .left
         l.text = ""
-        l.font = UIFont(name: "Helvetica-Bold", size: 12)
-        l.textColor = UIColor.lightGray
+        l.font = Style.Fonts.description
+        l.textColor = Style.Colors.description
         return l
     }()
     
@@ -100,7 +96,6 @@ class AlbumTableViewCell: UITableViewCell {
     }
     
     public func updateImageIfNeeded(image: UIImage?) {
-        imgView.alpha = 0
         imgView.image = image
         UIView.animate(withDuration: 0.4, animations: { self.imgView.alpha = 1 })
     }

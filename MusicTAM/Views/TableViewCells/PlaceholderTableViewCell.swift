@@ -33,8 +33,8 @@ class PlaceholderTableViewCell: UITableViewCell {
         l.numberOfLines = 3
         l.textAlignment = .left
         l.text = ""
-        l.font = UIFont(name: "Helvetica", size: 14)
-        l.textColor = UIColor.lightGray
+        l.font = Style.Fonts.description
+        l.textColor = Style.Colors.description
         l.textAlignment = .center
         return l
     }()
